@@ -64,11 +64,11 @@ class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
         {
             addr.append(string)
         }
-        else if element.isEqual(to: "lat")
+        else if element.isEqual(to: "longi")
         {
             XPos.append(string)
         }
-        else if element.isEqual(to: "longi")
+        else if element.isEqual(to: "lat")
         {
             YPos.append(string)
         }
@@ -89,11 +89,11 @@ class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
             
             if !XPos.isEqual(nil)
             {
-                elements.setObject(XPos, forKey: "lat" as NSCopying)
+                elements.setObject(XPos, forKey: "longi" as NSCopying)
             }
             if !YPos.isEqual(nil)
             {
-                elements.setObject(YPos, forKey: "longi" as NSCopying)
+                elements.setObject(YPos, forKey: "lat" as NSCopying)
             }
             
             posts.add(elements)
