@@ -156,21 +156,30 @@
             </objects>
             <point key="canvasLocation" x="2568" y="-90"/>
         </scene>
-        <!--Map View Controller-->
+        <!--지도-->
         <scene sceneID="89l-b4-O1T">
             <objects>
                 <viewController id="6y3-w1-tdn" customClass="MapViewController" customModule="IOSProgramming" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h54-jo-2td">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ErS-C9-NYX">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="wYI-B0-fNC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="evV-gp-n0Q"/>
+                    <navigationItem key="navigationItem" title="지도" id="evV-gp-n0Q"/>
+                    <connections>
+                        <outlet property="mapView" destination="ErS-C9-NYX" id="gBN-cm-Zxe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQH-88-3y5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3387" y="-90"/>
+            <point key="canvasLocation" x="3386.9565217391305" y="-90.401785714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gTE-sI-qsD">

@@ -15,6 +15,7 @@
 		A15AFABA265995B60085440F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A15AFAB8265995B60085440F /* LaunchScreen.storyboard */; };
 		A15AFAC4265A2DB80085440F /* ElectricCarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AFAC3265A2DB80085440F /* ElectricCarTableViewController.swift */; };
 		A15AFAC7265A2F040085440F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AFAC6265A2F040085440F /* MapViewController.swift */; };
+		A15AFACA265A41020085440F /* ElectricCar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AFAC9265A41020085440F /* ElectricCar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A15AFABB265995B60085440F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A15AFAC3265A2DB80085440F /* ElectricCarTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectricCarTableViewController.swift; sourceTree = "<group>"; };
 		A15AFAC6265A2F040085440F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		A15AFAC9265A41020085440F /* ElectricCar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectricCar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				A15AFABB265995B60085440F /* Info.plist */,
 				A15AFAC3265A2DB80085440F /* ElectricCarTableViewController.swift */,
 				A15AFAC6265A2F040085440F /* MapViewController.swift */,
+				A15AFAC9265A41020085440F /* ElectricCar.swift */,
 			);
 			path = IOSProgramming;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				A15AFAB0265995B50085440F /* SceneDelegate.swift in Sources */,
 				A15AFAC7265A2F040085440F /* MapViewController.swift in Sources */,
 				A15AFAC4265A2DB80085440F /* ElectricCarTableViewController.swift in Sources */,
+				A15AFACA265A41020085440F /* ElectricCar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
