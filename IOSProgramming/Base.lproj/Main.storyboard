@@ -48,7 +48,7 @@
                     <navigationItem key="navigationItem" title="전기차 충전소 검색" id="eTl-Sh-dru">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="1f0-eC-moB">
                             <connections>
-                                <segue destination="6Ax-MU-Mp4" kind="show" id="R5n-n6-Fmv"/>
+                                <segue destination="6Ax-MU-Mp4" kind="show" identifier="segueToTableView" id="R5n-n6-Fmv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -105,12 +105,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ofP-vz-KSM">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="cCL-tN-be7" detailTextLabel="qxo-SI-PRi" style="IBUITableViewCellStyleSubtitle" id="ofP-vz-KSM">
+                                <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ofP-vz-KSM" id="rLG-pE-ged">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cCL-tN-be7">
+                                            <rect key="frame" x="20" y="10" width="33" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qxo-SI-PRi">
+                                            <rect key="frame" x="20" y="31.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -120,15 +136,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="충전소 리스트" id="9yC-xK-8CR">
-                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="ZLR-h9-2gG"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="ZLR-h9-2gG">
+                            <connections>
+                                <segue destination="JQH-rZ-sBd" kind="unwind" unwindAction="doneToPickerViewControllerWithSegue:" id="PSk-j5-UZn"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Map" id="BCc-YC-5fM">
                             <connections>
-                                <segue destination="6y3-w1-tdn" kind="show" id="TQo-3E-LSM"/>
+                                <segue destination="6y3-w1-tdn" kind="show" identifier="segueToMapView" id="TQo-3E-LSM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tbData" destination="gTh-Cc-yqy" id="fhV-ta-mgH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DFB-f0-S4J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="JQH-rZ-sBd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2568" y="-90"/>
         </scene>

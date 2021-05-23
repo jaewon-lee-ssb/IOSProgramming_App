@@ -7,11 +7,78 @@
 
 import UIKit
 
-class ElectricCarTableViewController: UITableViewController {
+class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
 
-    override func viewDidLoad() {
+    @IBOutlet var tbData: UITableView!
+    
+    var url : String?
+    
+    var parser = XMLParser()
+    
+    var posts = NSMutableArray()
+    
+    var elements = NSMutableDictionary()
+    var element = NSString()
+    
+    var csNm = NSMutableString()
+    var addr = NSMutableString()
+    
+    func beginParsing()
+    {
+        posts = []
+        parser = XMLParser(contentsOf: (URL(string: url!))!)!
+        parser.delegate = self
+        parser.parse()
+        tbData!.reloadData()
+    }
+    
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String])
+    {
+        element = elementName as NSString
+        if (elementName as NSString).isEqual(to: "item")
+        {
+            elements = NSMutableDictionary()
+            elements = [:]
+            csNm = NSMutableString()
+            csNm = ""
+            addr = NSMutableString()
+            addr = ""
+        }
+    }
+    
+    func parser(_ parser: XMLParser, foundCharacters string: String)
+    {
+        if element.isEqual(to: "csNm")
+        {
+            csNm.append(string)
+        }
+        else if element.isEqual(to: "addr")
+        {
+            addr.append(string)
+        }
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?)
+    {
+        if (elementName as NSString).isEqual(to: "item")
+        {
+            if !csNm.isEqual(nil)
+            {
+                elements.setObject(csNm, forKey: "csNm" as NSCopying)
+            }
+            if !addr.isEqual(nil)
+            {
+                elements.setObject(addr, forKey: "addr" as NSCopying)
+            }
+            
+            posts.add(elements)
+        }
+    }
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
+        beginParsing()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -21,25 +88,28 @@ class ElectricCarTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return posts.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "csNm") as! NSString as String
+        cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "addr") as! NSString as String
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
