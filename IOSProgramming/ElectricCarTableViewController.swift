@@ -26,6 +26,9 @@ class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
     var XPos = NSMutableString()
     var YPos = NSMutableString()
     
+    var stationname = ""
+    var stationname_utf8 = ""
+    
     func beginParsing()
     {
         posts = []
@@ -134,6 +137,22 @@ class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
             if let mapViewController = segue.destination as? MapViewController
             {
                 mapViewController.posts = posts
+            }
+        }
+        
+        if segue.identifier == "segueToStationDetail"
+        {
+            if let cell = sender as? UITableViewCell
+            {
+                let indexPath = tableView.indexPath(for: cell)
+                stationname = (posts.object(at: (indexPath?.row)!) as AnyObject).value(forKey: "csNm") as! NSString as String
+                
+                stationname_utf8 = stationname.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+                
+                if let detailStationTableViewController = segue.destination as? DetailStationTableViewController
+                {
+                    detailStationTableViewController.url = url! + "&csNm=" + stationname_utf8
+                }
             }
         }
     }
