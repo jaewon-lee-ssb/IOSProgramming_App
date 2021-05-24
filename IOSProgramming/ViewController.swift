@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
     @IBOutlet weak var pickerView: UIPickerView!
-    
+    @IBOutlet weak var searchTextField: UITextField!
     @IBAction func doneToPickerViewController(segue: UIStoryboardSegue)
     {
         
@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var pickerDataSource = ["광진구", "구로구", "동대문구", "종로구"]
     
-    var url : String = "http://openapi.kepco.co.kr/service/EvInfoServiceV2/getEvSearchList?serviceKey=b97lkQjk63tTOXF5jsp1Xk3qUnVfbQCkbnLAB9C%2FG8fN%2BsAqDpLX8zewnKRXX%2FBlop0MjnhbJcT7V8o23UhMvQ%3D%3D&pageNo=1&numOfRows=100&addr="
+    var url : String = "http://openapi.kepco.co.kr/service/EvInfoServiceV2/getEvSearchList?serviceKey=b97lkQjk63tTOXF5jsp1Xk3qUnVfbQCkbnLAB9C%2FG8fN%2BsAqDpLX8zewnKRXX%2FBlop0MjnhbJcT7V8o23UhMvQ%3D%3D&pageNo=1&numOfRows=200&addr="
     var sgguNm : String = "광진구"
     
     func makeStringKoreanEncoded(_ string: String) -> String
@@ -34,8 +34,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             {
                 if let electricCarTableViewController = navController.topViewController as? ElectricCarTableViewController
                 {
-                    let encodedNm = makeStringKoreanEncoded(sgguNm)
-                    electricCarTableViewController.url = url + encodedNm
+                    if (searchTextField.hasText) {
+                        let encodedNm = makeStringKoreanEncoded(String(searchTextField.text!))
+                        electricCarTableViewController.url = url + encodedNm
+                    }
+                    else {
+                        let encodedNm = makeStringKoreanEncoded(sgguNm)
+                        electricCarTableViewController.url = url + encodedNm
+                    }
                 }
             }
         }
