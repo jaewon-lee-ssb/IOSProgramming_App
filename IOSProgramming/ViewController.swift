@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
+    
+    
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var searchTextField: UITextField!
     @IBAction func doneToPickerViewController(segue: UIStoryboardSegue)
@@ -16,10 +18,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
     }
     
-    var pickerDataSource = ["광진구", "구로구", "동대문구", "종로구"]
+    var pickerDataSource = ["서울특별시", "경기도", "인천광역시", "부산광역시", "대전광역시", "대구광역시", "울산광역시", "세종특별자치시", "광주광역시", "강원도", "충청북도", "충청남도", "경상북도", "경상남도", "전라북도", "전라남도", "제주특별자치도"]
     
     var url : String = "http://openapi.kepco.co.kr/service/EvInfoServiceV2/getEvSearchList?serviceKey=b97lkQjk63tTOXF5jsp1Xk3qUnVfbQCkbnLAB9C%2FG8fN%2BsAqDpLX8zewnKRXX%2FBlop0MjnhbJcT7V8o23UhMvQ%3D%3D&pageNo=1&numOfRows=200&addr="
-    var sgguNm : String = "광진구"
+    var sgguNm : String = "서울특별시"
     
     func makeStringKoreanEncoded(_ string: String) -> String
     {
@@ -64,22 +66,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        if row == 0
-        {
-            sgguNm = "광진구"
-        }
-        else if row == 1
-        {
-            sgguNm = "구로구"
-        }
-        else if row == 2
-        {
-            sgguNm = "동대문구"
-        }
-        else if row == 3
-        {
-            sgguNm = "종로구"
-        }
+        sgguNm = pickerDataSource[row]
     }
     
     override func viewDidLoad()

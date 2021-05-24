@@ -13,6 +13,9 @@ class MapViewController: UIViewController, MKMapViewDelegate
     @IBOutlet weak var mapView: MKMapView!
     var posts = NSMutableArray()
     
+    var initLat: Double = 0.0
+    var initLon: Double = 0.0
+    
     let regionRadius: CLLocationDistance = 5000
     
     func centerMapOnLocation(location: CLLocation)
@@ -36,6 +39,8 @@ class MapViewController: UIViewController, MKMapViewDelegate
             let lon = (XPos as NSString).doubleValue
             let chargingStation = ElectricCar(title: csNm, locationName: addr, coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
             chargingStations.append(chargingStation)
+            initLat = lat
+            initLon = lon
         }
     }
     
@@ -71,10 +76,11 @@ class MapViewController: UIViewController, MKMapViewDelegate
     {
         super.viewDidLoad()
         
-        let initialLocation = CLLocation(latitude: 37.536208, longitude: 127.095244)
+        loadInitialData()
+        let initialLocation = CLLocation(latitude: initLat, longitude: initLon)
         centerMapOnLocation(location: initialLocation)
         mapView.delegate = self
-        loadInitialData()
+        //loadInitialData()
         mapView.addAnnotations(chargingStations)
     }
     
