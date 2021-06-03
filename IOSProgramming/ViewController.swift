@@ -10,8 +10,6 @@ import Speech
 
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    
-    
     @IBOutlet weak var transcribeButton: UIButton!
     @IBOutlet weak var stopButton: UIButton!
     @IBAction func startTranscribing(_ sender: Any)

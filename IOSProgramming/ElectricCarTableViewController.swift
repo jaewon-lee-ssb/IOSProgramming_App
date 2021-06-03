@@ -23,6 +23,8 @@ class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
     var csNm = NSMutableString()
     var addr = NSMutableString()
     
+    var cpId = NSMutableString()
+    
     var XPos = NSMutableString()
     var YPos = NSMutableString()
     
@@ -50,6 +52,9 @@ class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
             addr = NSMutableString()
             addr = ""
             
+            cpId = NSMutableString()
+            cpId = ""
+            
             XPos = NSMutableString()
             XPos = ""
             YPos = NSMutableString()
@@ -66,6 +71,10 @@ class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
         else if element.isEqual(to: "addr")
         {
             addr.append(string)
+        }
+        else if element.isEqual(to: "cpId")
+        {
+            cpId.append(string)
         }
         else if element.isEqual(to: "longi")
         {
@@ -88,6 +97,11 @@ class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
             if !addr.isEqual(nil)
             {
                 elements.setObject(addr, forKey: "addr" as NSCopying)
+            }
+            
+            if !cpId.isEqual(nil)
+            {
+                elements.setObject(cpId, forKey: "cpId" as NSCopying)
             }
             
             if !XPos.isEqual(nil)
@@ -124,7 +138,10 @@ class ElectricCarTableViewController: UITableViewController, XMLParserDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "csNm") as! NSString as String
+        cell.textLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "csNm") as! NSString as String + " - "
+        
+        cell.textLabel?.text! += (posts.object(at: indexPath.row) as AnyObject).value(forKey: "cpId") as! NSString as String
+        
         cell.detailTextLabel?.text = (posts.object(at: indexPath.row) as AnyObject).value(forKey: "addr") as! NSString as String
 
         return cell
