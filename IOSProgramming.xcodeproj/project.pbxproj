@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A12D917626693494006889D4 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A12D917526693494006889D4 /* WeatherViewController.swift */; };
 		A15AFAAE265995B50085440F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AFAAD265995B50085440F /* AppDelegate.swift */; };
 		A15AFAB0265995B50085440F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AFAAF265995B50085440F /* SceneDelegate.swift */; };
 		A15AFAB2265995B50085440F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A15AFAB1265995B50085440F /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		A12D916E26693130006889D4 /* SCDream6.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SCDream6.otf; sourceTree = "<group>"; };
+		A12D917526693494006889D4 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		A15AFAAA265995B50085440F /* IOSProgramming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSProgramming.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15AFAAD265995B50085440F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A15AFAAF265995B50085440F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				A15AFAC6265A2F040085440F /* MapViewController.swift */,
 				A15AFAC9265A41020085440F /* ElectricCar.swift */,
 				A15AFB14265BEDD20085440F /* DetailStationTableViewController.swift */,
+				A12D917526693494006889D4 /* WeatherViewController.swift */,
 			);
 			path = IOSProgramming;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				A15AFAB0265995B50085440F /* SceneDelegate.swift in Sources */,
 				A15AFAC7265A2F040085440F /* MapViewController.swift in Sources */,
 				A15AFAC4265A2DB80085440F /* ElectricCarTableViewController.swift in Sources */,
+				A12D917626693494006889D4 /* WeatherViewController.swift in Sources */,
 				A15AFACA265A41020085440F /* ElectricCar.swift in Sources */,
 				A15AFB15265BEDD20085440F /* DetailStationTableViewController.swift in Sources */,
 			);
