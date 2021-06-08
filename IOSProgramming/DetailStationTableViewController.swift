@@ -11,12 +11,34 @@ class DetailStationTableViewController: UITableViewController, XMLParserDelegate
 
     @IBOutlet var detailTableView: UITableView!
     
+    @IBAction func WeatherButton(_ sender: Any)
+    {
+        
+    }
+    
+    var nx : String = "1"
+    var ny : String = "57"
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "segueToWeatherView"
+        {
+            if let navController = segue.destination as? UINavigationController
+            {
+                if let weatherViewController = navController.topViewController as? WeatherViewController
+                {
+                    weatherViewController.nx = nx
+                    weatherViewController.ny = ny
+                }
+            }
+        }
+    }
     var url : String?
     
     var parser = XMLParser()
     
-    let postsname : [String] = ["충전소명", "충전기 타입", "충전기 ID", "충전기 주소", "충전기 상태", "갱신 날짜"]
-    var posts : [String] = ["", "", "", "", "", ""]
+    let postsname : [String] = ["충전소명", "충전기 타입", "충전기 ID", "충전기 주소", "충전기 상태", "경도", "위도", "갱신 날짜"]
+    var posts : [String] = ["", "", "", "", "", "", "", ""]
     
     var element = NSString()
     
@@ -25,6 +47,9 @@ class DetailStationTableViewController: UITableViewController, XMLParserDelegate
     var cpId = NSMutableString()
     var addr = NSMutableString()
     var cpStat = NSMutableString()
+    var longi = NSMutableString()
+    var lat = NSMutableString()
+    
     var statUpdateDatetime = NSMutableString()
     
     func beginParsing()
@@ -41,7 +66,7 @@ class DetailStationTableViewController: UITableViewController, XMLParserDelegate
         element = elementName as NSString
         if (elementName as NSString).isEqual(to: "item")
         {
-            posts = ["", "", "", "", "", ""]
+            posts = ["", "", "", "", "", "", "", ""]
             
             csNm = NSMutableString()
             csNm = ""
@@ -52,6 +77,11 @@ class DetailStationTableViewController: UITableViewController, XMLParserDelegate
             cpId = ""
             addr = NSMutableString()
             addr = ""
+            
+            longi = NSMutableString()
+            longi = ""
+            lat = NSMutableString()
+            lat = ""
             
             cpStat = NSMutableString()
             cpStat = ""
@@ -77,6 +107,15 @@ class DetailStationTableViewController: UITableViewController, XMLParserDelegate
         else if element.isEqual(to: "addr")
         {
             addr.append(string)
+        }
+        
+        else if element.isEqual(to: "longi")
+        {
+            longi.append(string)
+        }
+        else if element.isEqual(to: "lat")
+        {
+            lat.append(string)
         }
         else if element.isEqual(to: "cpStat")
         {
@@ -131,9 +170,26 @@ class DetailStationTableViewController: UITableViewController, XMLParserDelegate
             {
                 posts[4] = cpStat as String
             }
+            if !longi.isEqual(nil)
+            {
+                posts[5] = longi as String
+                let temp = Double(longi as String)!
+                let doubleAsString = NumberFormatter.localizedString(from: (NSNumber(value: temp)), number: .none)
+                nx = doubleAsString
+                //print(doubleAsString)
+            }
+            if !lat.isEqual(nil)
+            {
+                posts[6] = lat as String
+                let temp = Double(longi as String)!
+                let doubleAsString = NumberFormatter.localizedString(from: (NSNumber(value: temp)), number: .none)
+                ny = doubleAsString
+                //print(doubleAsString)
+            }
+            
             if !statUpdateDatetime.isEqual(nil)
             {
-                posts[5] = statUpdateDatetime as String
+                posts[7] = statUpdateDatetime as String
             }
         }
     }
